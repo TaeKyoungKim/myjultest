@@ -8,10 +8,9 @@ app.set('views', __dirname+'/views');
 app.set('view engine', 'ejs');
 app.set('html', require('ejs').renderFile);
 app.use(bodyParser.urlencoded({extended:false}));
-
+app.use(express.static(__dirname+'/public'))
 const mysql = require('mysql')
 
-const router = express.Router()
 dot.config();
 
 var db = mysql.createConnection({
@@ -20,11 +19,6 @@ var db = mysql.createConnection({
     password: process.env.DB_PASSWORD,
     database : process.env.DB_NAME
 })
-
-
-app.get('/', function (req, res, next) {
-    res.send('signin');
-});
 
 app.use('/',apiRouter)
 
@@ -45,7 +39,6 @@ app.use('/',apiRouter)
 //         }
 //     });
 // });
-app.set()
 
 app.listen(3001 , ()=>{
     console.log("Start@@")

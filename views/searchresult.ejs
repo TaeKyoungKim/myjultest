@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>userInfo</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script>
+    </script>
+<body>
+    <h2>결과 조회</h2>
+
+<table style="width:100%">
+  <tr>
+    <th>신자번호</th>
+    <th>대표자</th>
+    <!-- <th>관계</th>  -->
+    <th>법명</th>
+    <th>등록날짜</th>
+    <th>주소</th> 
+    <th>우편번호</th>
+    <th></th>
+  </tr>
+    <% for(let i=0; i<data.length; i++) { %>
+        <tr>
+            <th><%= data[i].sno %></th>
+            <th><a href='/mainDetail/<%= data[i].sno %>'><%= data[i].name %></a></th>
+            <th><%= data[i].hname %></th>
+            <th id="date1"><%= data[i].joinDate %></th>
+            <th><%= data[i].address %></th>
+            <th><%= data[i].zip %></th>
+            <th><button>수정</button></th>   
+        </tr> 
+                      
+        <%   } %> 
+        
+
+</table>
+
+</body>
+</html>

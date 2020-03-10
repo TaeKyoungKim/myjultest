@@ -1,59 +1,39 @@
 <html>
     <head>
-        <title>22222TESTESTEST22222</title>
-        <link href='https://fonts.googleapis.com/css?family=Audiowide|Iceland|Monoton|Pacifico|Press+Start+2P|Vampiro+One'
-        rel='stylesheet'>
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        title 게시판 목록
     </head>
     <body>
-        <!-- <% for (var i = 0; i < data.length; i++) { %>
-            <ul>
-                <li><%= data[i].name %></li><li><%= data[i].address %></li>
-            </ul>
-        <% } %> -->
-
-        <h1><%= title %></h1>
-<a href="">글쓰기</a>
-<table border="1">
-    <tr>
-        <td>번호</td>
-        <td>아이디</td>
-        <td>이름</td>
-        <td>가입일자</td>
-        <td>전화번호</td>
-        <td>메모</td>
-    </tr>
-    <%
-    for(var i = (page * page_num) - page_num; i < (page * page_num); i++) {
-    if(i > length){
-        i++;
-    }else{
-        var data = data[i]
-    %>
-    <tr>
-        <td><%= i + 1 %></td>
-        <td><%= data.sno %></td>
-        <td><a href="/board/read/<%= data.sno %>"><%= data.name %></a></td>
-        <td><%= data.joinDate %></td>
-        <td><%= data.phone %></td>
-        <td><%= data.memo %></td>
-    </tr>
-    <% }
-    }
-    %>
-    <tr>
-        <td colspan="6">
-            <%
-            for(var j = 0; j < data.length / page_num; j++){
-            %>
-            [<a href="/board/page/<%= j + 1 %>"><%= j + 1 %></a>]
-            <%
+        <h1>회원 목록</h1>
+        <a href='/main/add'><button type='button'>회원추가 추가</button></a>
+        <table border='1'>
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>작성자</th>
+            </tr>
+            <%         
+            for(let i=0; i<data.mainList.length; i++) {        
+            %> 
+            <tr>   
+                <th><%=data.mainList[i].sno %></th>
+                <th><a href='/mainDetail/<%= data.mainList[i].sno %>'><%= data.mainList[i].address %></a></th>
+                <th><%=data.mainList[i].name %></th>
+            </tr>                   
+            <%  
             }
-            %>
-        </td>
-    </tr>
-</table>
-
+            %> 
+        </table> 
+            <%
+            if (data.currentPage > 1) {
+            %> 
+                <a href='/main/<%=data.currentPage-1 %>'>이전</a> 
+            <%    
+            }
+            if (data.currentPage < data.lastPage) {
+            %>        
+                <a href='/main/<%= data.currentPage+1 %>'>다음</a>   
+            <%    
+            }
+            %> 
     </body>
 </html>

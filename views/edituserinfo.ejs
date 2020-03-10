@@ -1,0 +1,73 @@
+<%- include ('./layouts/header_4.ejs') %>
+
+        
+          <div class="card-body">
+            <form action="/useredit?searchData=<%= mainData[0].sno %>" class="number-tab-steps wizard-circle" method="POST">
+              <!-- Step 1 -->
+              <h6>Step 1</h6>
+              <fieldset>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="name">대표자 :</label>
+                      <input type="text" class="form-control" id="name" name="name" value="<%= mainData[0].name %>">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="sno">불자 카드번호 :</label>
+                      <input type="text" class="form-control" id="sno" name="sno" value="<%= mainData[0].sno %>">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="address">불자 주소 :</label>
+                      <textarea  class="form-control" id="address" name="address" rows="2" ><%= mainData[0].address %> </textarea>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="Phone">불자 전화번호</label>
+                      <input type="text" class="form-control" id="Phone" name="Phone" value="<%= mainData[0].Phone %>">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="hname">불자 법명</label>
+                      <input type="text" class="form-control" id="hname" name="hname" value="<%= mainData[0].hname %>">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="parentSno">모신도</label>
+                      <input type="text" class="form-control" id="parentSno" name="parentSno" value="<%= mainData[0].parentSno %>">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="memo">메모 :</label>
+                      <textarea  class="form-control" id="memo" name="memo" rows="4" ><%= mainData[0].memo %> </textarea>
+                    </div>
+                  </div>
+    
+                </div>
+              </fieldset>
+              <div class="modal-footer">
+                <input type="reset" class="btn btn-outline-secondary btn-lg" data-dismiss="modal"
+                value="취소">
+                <input type="submit" class="btn btn-outline-primary btn-lg" value="수정">
+              </div>
+            </form>
+          </div>
+       
+         
+          <!-- Table header styling end -->
+      
+
+<%- include ('./layouts/footer.ejs') %>

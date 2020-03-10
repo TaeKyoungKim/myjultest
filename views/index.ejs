@@ -1,0 +1,178 @@
+<%- include ('./layouts/header.ejs') %>
+
+<div class="app-content content">
+    <div class="content-wrapper">
+      <div class="content-header row">
+        <div class="content-header-left col-md-6 col-12 mb-2 breadcrumb-new">
+          <h3 class="content-header-title mb-0 d-inline-block" style="font-family: Nanum Gothic;">정보 입력</h3>
+          <div class="row breadcrumbs-top d-inline-block">
+            <div class="breadcrumb-wrapper col-12">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/" style="font-family: Nanum Gothic;">초기화</a>
+                </li>
+    
+              </ol>
+            </div>
+          </div>
+        </div>
+        <div class="content-header-right col-md-6 col-12">
+          <div class="dropdown float-md-right">
+            <button class="btn btn-danger dropdown-toggle round btn-glow px-2" id="dropdownBreadcrumbButton"
+            type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions</button>
+            <div class="dropdown-menu" aria-labelledby="dropdownBreadcrumbButton"><a class="dropdown-item" href="#"><i class="la la-calendar-check-o"></i> Calender</a>
+              <a class="dropdown-item" href="#"><i class="la la-cart-plus"></i> Cart</a>
+              <a class="dropdown-item" href="#"><i class="la la-life-ring"></i> Support</a>
+              <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="la la-cog"></i> Settings</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="content-body">
+        <section id="demo">
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-header">
+                  <h4 class="card-title" style="font-family: Nanum Gothic;">불자님 기본 정보 입력</h4>
+                  <div class="card-body">
+                    <form action="/useredit" class="number-tab-steps wizard-circle" method="POST">
+                      <!-- Step 1 -->
+                      <h6>Step 1</h6>
+                      <fieldset>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label for="lastName1">성(Last name) :</label>
+                              <input type="text" class="form-control" id="lastName1" name="lastName1">
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label for="firstName1">이름(First name) :</label>
+                              <input type="text" class="form-control" id="firstName1" name="firstName1">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label for="emailAddress1">이메일(Email Address) :</label>
+                              <input type="email" class="form-control" id="emailAddress1" name="emailAddress1">
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label for="date1">입회일(Date of Join) :</label>
+                              <input type="date" class="form-control" id="date1" name="date1" >
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label for="phoneNumber1">전화번호 :</label>
+                              <input type="tel" class="form-control" id="phoneNumber1" name="phoneNumber1">
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label>원하는 옵션 선택 :</label>
+                              <div class="c-inputs-stacked">
+                                <div class="d-inline-block custom-control custom-checkbox">
+                                  <input type="checkbox" name="postit" class="custom-control-input" id="postit" name="postit">
+                                  <label class="custom-control-label" for="postit">우편발송</label>
+                                </div>
+                                <div class="d-inline-block custom-control custom-checkbox">
+                                  <input type="checkbox" name="birthYN" class="custom-control-input" id="birthYN" name="birthYN">
+                                  <label class="custom-control-label" for="birthYN">생일카드</label>
+                                </div>
+                               
+                            </div>
+                          </div>
+                        </div>
+                      </fieldset>
+                      <!-- Step 2 -->
+                      
+                      <h6>Step 2</h6>
+                      <fieldset>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              
+                              <label for="postnumber">주소 우편번호 : </label> 
+                              <button type="button" class="btn btn-icon btn-primary mr-1" onclick="openZipSearch()"><i class="la la-address">검색</i></button>
+                              <input type="text" class="form-control" id="postnumber" name="postnumber" name="postnumber">
+                            </div>
+                            <div class="form-group">
+                              <label for="detailaddress">상세 주소 :</label>
+                              <input type="text" class="form-control" id="detailaddress" name="detailaddress">
+                            </div>
+                            <div class="form-group">
+                              <label for="introducer">인도인 :</label>
+                              <input type="text" class="form-control" id="introducer" name="introducer">
+                            </div>
+                            <div class="form-group">
+                              <label for="parent"">모신도 :</label>
+                              <input type="text" class="form-control" id="parent" name="parent">
+                            </div>
+                            <div class="form-group">
+                            <label for="select">소속기관:</label>
+                              <select class="custom-select form-control" id="select" name="select">
+                          
+                                <option value="">Select</option>
+                                <option value=1>서신진북(1)</option>
+                                <option value=2>우아호성익산</option>
+                                <option value=3>중화산</option>
+                                <option value=4>인후</option>
+                                <option value=5>전주기타</option>
+                                <option value=6>송천</option>
+                                <option value=7>효자</option>
+                                <option value=8>평화</option>
+                                <option value=9>삼천</option>
+                                <option value=10>전북기타</option>
+                                <option value=11>완주이서</option>
+                                <option value=12>제외</option>
+                                <option value=90>전북외 전국</option>
+                                <option value=99>미분류</option>
+                              </select>
+                            </div>
+                          </div>
+                            
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label for="addesss"> 주소:</label>
+                              <input type="text" class="form-control" id="adderss" name="adderss" name="addesss">
+                            </div>
+                            <div class="form-group">
+                              <label for="shortDescription1">메모 :</label>
+                              <textarea name="shortDescription" id="shortDescription1" rows="4" class="form-control" name="shortDescription1"></textarea>
+                            </div>
+                          </div>
+                        </div>
+                      </fieldset>
+                      <script>
+
+                        function openZipSearch() {
+                          new daum.Postcode({
+                            oncomplete: function(data) {
+                              $('[name=postnumber]').val(data.zonecode); // 우편번호 (5자리)
+                              $('[name=adderss]').val(data.address);
+                              $('[name=addr2]').val(data.buildingName);
+                            }
+                          }).open();
+                        }
+                      </script>
+                      
+                      <input type="submit" />
+                    </form>
+                  </div>
+                
+              </div>
+            </div>
+          </div>
+        </section>
+        
+       
+      </div>
+    </div>
+    <%- include ('./layouts/footer.ejs') %>

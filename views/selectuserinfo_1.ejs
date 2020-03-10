@@ -1,0 +1,271 @@
+<%- include ('./layouts/header_3.ejs') %>
+<div id="print">
+          <!-- Card animation start -->
+          <section id="cardAnimation" class="cardAnimation">
+            <div class="card">
+                  <div class="card-header" style="margin-bottom: 1rem;">
+                    <h4 style="font-family: Nanum Gothic;" >신도 상세 페이지</h4>
+                    <p style="font-family: Nanum Gothic;">신도카드 :     <%= data[0].name %>불자님의 번호 <%= data[0].sno %>-<%= data[0].mainNo %> </p>
+                    <hr>
+                    <button onClick="location.href='/useredit?searchData=<%= mainData[0].sno %>'" type="button" class="btn btn-warning btn-min-width box-shadow-4 mr-1 mb-1" style="font-family: Nanum Gothic;" >수정</button>
+                  <button type="button" class="btn btn-danger btn-min-width box-shadow-4 mr-1 mb-1" style="font-family: Nanum Gothic;" data-toggle="modal"
+                  data-target="#userDeleteForm">삭제</button>
+                  
+                  </div>
+                  
+            <div class="row">
+            <div class="col-md-4 col-sm-12">
+              <div class="card box-shadow-0" data-appear="appear" data-animation="zoomIn">
+                <div class="card-header bg-primary white" >
+                  <h4 class="card-title white" style="font-family: Nanum Gothic;"> 대표자</h4>
+                  
+                </div>
+                
+                  <div class="card-body border-bottom-primary">
+                    <p class="card-text" style="font-family: Nanum Gothic;"><%= mainData[0].name %></p>
+                
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-12">
+              <div class="card box-shadow-0" data-appear="appear" data-animation="zoomIn">
+                <div class="card-header white bg-success">
+                  <h4 class="card-title white" style="font-family: Nanum Gothic;">불자 카드번호</h4>
+                  
+                </div>
+                
+                  <div class="card-body border-bottom-success">
+                    <p class="card-text" style="font-family: Nanum Gothic;"><%= mainData[0].sno %></p>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-12">
+              <div class="card box-shadow-0" data-appear="appear" data-animation="zoomIn">
+                <div class="card-header white bg-danger">
+                  <h4 class="card-title white" style="font-family: Nanum Gothic;">불자 주소</h4>
+                  
+                </div>
+                
+                  <div class="card-body border-bottom-danger">
+                    <p class="card-text" style="font-family: Nanum Gothic;"><%= mainData[0].address %></p>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-12">
+              <div class="card box-shadow-0" data-appear="appear" data-animation="zoomIn">
+                <div class="card-header white bg-warning">
+                  <h4 class="card-title white" style="font-family: Nanum Gothic;">불자 전화번호</h4>
+                  
+                </div>
+                
+                  <div class="card-body border-bottom-warning">
+                    <p class="card-text" style="font-family: Nanum Gothic;"><%= mainData[0].Phone %></p>
+                 
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-12">
+              <div class="card box-shadow-0" data-appear="appear" data-animation="zoomIn">
+                <div class="card-header white bg-info">
+                  <h4 class="card-title white" style="font-family: Nanum Gothic;">불자 법명</h4>
+                  
+                </div>
+                
+                  <div class="card-body border-bottom-info">
+                    <p class="card-text" style="font-family: Nanum Gothic;"><%= mainData[0].hname %></p>
+                 
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-12">
+              <div class="card box-shadow-0" data-appear="appear" data-animation="zoomIn">
+                <div class="card-header white bg-blue-grey"> 
+                    <h4 class="card-title text-white" style="font-family: Nanum Gothic;">모(母)신도</h4>   
+                </div>
+             
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="card" data-appear="appear" data-animation="zoomIn">
+                  <div class="card-header card-head-inverse bg-success">
+                    <h4 class="card-title text-white" style="font-family: Nanum Gothic;">메모</h4>
+                    
+                  </div>
+                 
+                    <div class="card-body border-bottom-success">
+                      <p class="card-text"> <%= mainData[0].memo %></p>
+                  
+                  </div>
+                </div>
+              </div>
+              
+          </div>
+        
+        </div>
+          </section>
+          <!-- Card animation end -->
+        <!-- Restricted column ordering -->
+        <section id="column-ordering">
+            <div class="row">
+            <div class="col-12">
+              <div class="card">
+                  <div class="card-header">
+                    <h4 style="font-family: Nanum Gothic; font-size: 2rem;" class="card-title">가족리스트</h4>
+                    <button type="button" class="btn btn-warning btn-min-width box-shadow-4 mr-1 mb-1" style="font-family: Nanum Gothic;" data-toggle="modal"
+            data-target="#familyeditForm">수정</button>
+            <button type="button" class="btn btn-danger btn-min-width box-shadow-4 mr-1 mb-1" style="font-family: Nanum Gothic;"  data-toggle="modal"
+            data-target="#familyDeleteForm">삭제</button>
+             <!-- Modal -->
+             <div class="modal fade text-left" id="familyeditForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel33"
+             aria-hidden="true">
+               <div class="modal-dialog" role="document">
+                 <div class="modal-content">
+                   <div class="modal-header">
+                     <label class="modal-title text-text-bold-600" id="myModalLabel33" style="font-family: Nanum Gothic;"> 정보 수정</label>
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                       <span aria-hidden="true">&times;</span>
+                     </button>
+                   </div>
+             <div class="card-body">
+               <form action="/userinfo/add" class="number-tab-steps wizard-circle" method="POST">
+                 <!-- Step 1 -->
+                 <h6>Step 1</h6>
+                 <div class="card-body card-dashboard">
+                  <div class="table-responsive" style="margin-top: 15px;">
+                  
+                    <table class="table table-striped table-bordered add-rows" >
+                      <thead class="bg-success white">
+                        <tr>
+                        
+                          <th style="font-family: Nanum Gothic;"></th>
+                          <th style="font-family: Nanum Gothic;">관계</th>
+                          <th style="font-family: Nanum Gothic;">이름</th>
+                          <th style="font-family: Nanum Gothic;">법명</th>
+                          <th style="font-family: Nanum Gothic;">생일</th>
+                          <th style="font-family: Nanum Gothic;">핸드폰</th>
+                          <th style="font-family: Nanum Gothic;">직업</th>
+                          <th style="font-family: Nanum Gothic;">원불</th>
+                          <th style="font-family: Nanum Gothic;">인등</th>
+                          <th style="font-family: Nanum Gothic;">순서</th>
+                        
+                        </tr>
+                      </thead>
+                      <tbody id="my-body">
+                        <% for(var i=0; i<familyData.length ;i++ ){ %>
+                        <tr>
+                        <td><%= i+1 %></td>
+                        <td><input type="text" value="<%= familyData[i].relation %>"></td>
+                        <td><input type="text" value="<%= familyData[i].name %>"></td>
+                        <td><input type="text" value="<%= familyData[i].bName %>"></td>
+                        <td><input type="text" value="<%= familyData[i].sBirthDate %>"></td>
+                        <td><input type="text" value="<%= familyData[i].hPhone %>"></td>
+                        <td><input type="text" value="<%= familyData[i].job %>"></td>
+                        <td><input type="text" value="<%= familyData[i].hpYN %>"></td>
+                        <td><input type="text" value="<%= familyData[i].hpYN %>"></td>
+                        <td><input type="text" value="<%= familyData[i].sno %>"></td>
+                      </tr>
+                        <% } %>
+                      </tbody>
+                    </table>
+                    <script>
+                      function add_row() {
+                        var my_tbody = document.getElementById('my-tbody');
+                        // var row = my_tbody.insertRow(0); // 상단에 추가
+                        var row = my_tbody.insertRow( my_tbody.rows.length ); // 하단에 추가
+                        var cell1 = row.insertCell(0);
+                        cell1.innerHTML ="<input type='text' name='relation' value='/'/>"
+                        var cell2 = row.insertCell(1);
+                        cell1.innerHTML = "<input type='text' name='name' value='/' />";
+                        
+                      }
+                    
+                    </script>
+                  </div>
+                 <div class="modal-footer">
+                   <input type="reset" class="btn btn-outline-secondary btn-lg" data-dismiss="modal"
+                   value="취소">
+                   <input type="submit" class="btn btn-outline-primary btn-lg" value="수정">
+                 </div>
+               </form>
+             </div>
+                 </div>
+               </div>
+             </div>
+             </div>
+             
+ 
+             <div class="modal fade text-left" id="familyDeleteForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel33"
+             aria-hidden="true">
+               <div class="modal-dialog" role="document">
+                 <div class="modal-content">
+                   <div class="modal-header">
+                     <label class="modal-title text-text-bold-600" id="myModalLabel33">삭제</label>
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                       <span aria-hidden="true">&times;</span>
+                     </button>
+                   </div>
+                   <form action="#">
+                     <div class="modal-body">
+                       <label>기능구현 되어 있지 않음 </label>
+                       
+                       </div>
+                     </div>
+                     <div class="modal-footer">
+                       <input type="reset" class="btn btn-outline-secondary btn-lg" data-dismiss="modal"
+                       value="취소">
+                       <input type="submit" class="btn btn-outline-primary btn-lg" value="수정">
+                     </div>
+                   </form>
+                 </div>
+               </div>
+                   
+                  </div>
+              
+                <!-- <div class="card-content">
+                  <div class="card-body"> -->
+                 <!-- Table header styling start -->
+        <!-- <div class="row" id="header-styling"> -->
+           
+                    <div class="card-body card-dashboard">
+                  <div class="table-responsive" style="margin-top: 15px;">
+                    <table class="table table-striped table-bordered zero-configuration" >
+                      <thead class="bg-success white">
+                        <tr>
+                        <% for(var i=0;i<headerName.length;i++) { %>
+                          <th style="font-family: Nanum Gothic;"><%= headerName[i] %></th>
+                        <% } %>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% for(var i=0; i<familyData.length ;i++ ){ %>
+                        <tr>
+                        <td><%= i+1 %></td>
+                          <td><%= familyData[i].relation %></td>
+                          <td><%= familyData[i].name %></td>
+                          <td><%= familyData[i].bName %></td>
+                          <td><%= familyData[i].sBirthDate %></td>
+                          <td><%= familyData[i].hPhone %></td>
+                          <td><%= familyData[i].job %></td>
+                          <td><%= familyData[i].hpYN %></td>
+                          <td><%= familyData[i].hpYN %></td>
+                          <td><%= familyData[i].sno %></td>
+                        </tr>
+                        <% } %>
+                      </tbody>
+                    </table>
+                  </div>
+                
+            <!-- </div> -->
+        <!-- </div>
+        </div> -->
+        </div>
+        </div>
+        </div>
+        </section>
+      </div>   
+          <!-- Table header styling end -->
+      
+
+<%- include ('./layouts/footer.ejs') %>
